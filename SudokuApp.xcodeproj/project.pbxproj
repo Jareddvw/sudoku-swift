@@ -14,7 +14,6 @@
 		7F7130EA2939966200CA9412 /* SudokuAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7130E92939966200CA9412 /* SudokuAppTests.swift */; };
 		7F7130F42939966200CA9412 /* SudokuAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7130F32939966200CA9412 /* SudokuAppUITests.swift */; };
 		7F7130F62939966200CA9412 /* SudokuAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7130F52939966200CA9412 /* SudokuAppUITestsLaunchTests.swift */; };
-		7F713103293996E800CA9412 /* OneSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F713102293996E800CA9412 /* OneSquareView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		7F7130EF2939966200CA9412 /* SudokuAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F7130F32939966200CA9412 /* SudokuAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuAppUITests.swift; sourceTree = "<group>"; };
 		7F7130F52939966200CA9412 /* SudokuAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7F713102293996E800CA9412 /* OneSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSquareView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +96,6 @@
 			children = (
 				7F7130D82939966100CA9412 /* SudokuAppApp.swift */,
 				7F7130DA2939966100CA9412 /* ContentView.swift */,
-				7F713102293996E800CA9412 /* OneSquareView.swift */,
 				7F7130DC2939966200CA9412 /* Assets.xcassets */,
 				7F7130DE2939966200CA9412 /* Preview Content */,
 			);
@@ -262,7 +259,6 @@
 			files = (
 				7F7130DB2939966100CA9412 /* ContentView.swift in Sources */,
 				7F7130D92939966100CA9412 /* SudokuAppApp.swift in Sources */,
-				7F713103293996E800CA9412 /* OneSquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
