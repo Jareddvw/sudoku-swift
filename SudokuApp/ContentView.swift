@@ -57,6 +57,8 @@ struct SquareView: View {
 
 class BoardClass: ObservableObject {
     @Published var items = [Square]()
+    @Published var numSteps = 0
+    
     init() {
         self.makeNewBoard()
     }
@@ -82,8 +84,10 @@ class BoardClass: ObservableObject {
     func makeNewBoard() {
         items.removeAll()
         for i in 0...80 {
-            let perm = Int.random(in: 0..<10)
-            items.append(Square(value:perm, index:i, rowCol:indexToRowCol(index: i), isPermanent:(arc4random() != 0 && perm != 0)))
+//            let perm = (Int.random(in:0..<3) != 0) ? 0 : Int.random(in: 1..<10)
+            let perm = 0
+            items.append(Square(value:perm, index:i, rowCol:indexToRowCol(index: i),
+                                isPermanent:(perm > 0)))
         }
     }
     
@@ -102,6 +106,10 @@ class BoardClass: ObservableObject {
 
     
     func solveBoard() -> Bool {
+        numSteps += 1
+        if (numSteps > 100000) {
+            return false
+        }
         for i in 0 ..< 9 {
             for j in 0 ..< 9 {
                 if (items[rowColToIndex(row: i, col: j)].squareVal == 0) {
@@ -128,6 +136,7 @@ struct ContentView: View {
     @StateObject var board = BoardClass()
     @State var isSolved: Bool = false
     @State var selectedVal: Int = 0
+    @State var undoStack: [(from: Int, index: Int, value: Int)] = []
     
     func getButtonColor(currentVal: Int, selectedVal: Int) -> Color {
         if (currentVal == selectedVal) {
@@ -153,6 +162,7 @@ struct ContentView: View {
                         col in
                         let index = row * 9 + col
                         SquareView(data: board.items[index], onclick: {
+                            self.undoStack.append((self.board.items[index].squareVal, index, selectedVal))
                             self.board.setSquare(index: index, newVal: selectedVal)
                         })
                     })
@@ -160,11 +170,19 @@ struct ContentView: View {
             })
             VStack(spacing:2) {
                 HStack(spacing:2) {
-                    ForEach(0 ..< 6, content: { val in
+                    ForEach(-1 ..< 5, content: { val in
                         Button(action: {
-                            self.setSelectedVal(selected: val)
+                            if (val != -1) {
+                                self.setSelectedVal(selected: val)
+                            } else {
+                                if (undoStack.count == 0) {return}
+                                let lastAction = self.undoStack.removeLast()
+                                self.board.setSquare(index: lastAction.1, newVal: lastAction.0)
+                            }
                         }, label: {
-                            Text(val == 0 ? "X" : String(val))
+                            Text(val == 0 ? "X" :
+                                    val == -1 ? "<-" :
+                                        String(val))
                                 .foregroundColor(Color.white)
                                 .bold()
                                 .frame(width:40, height:40, alignment: .center)
@@ -174,7 +192,7 @@ struct ContentView: View {
                     })
                 }
                 HStack(spacing:2) {
-                    ForEach(6 ..< 10, content: { val in
+                    ForEach(5 ..< 10, content: { val in
                         Button(action: {
                             self.setSelectedVal(selected: val)
                         }, label: {
@@ -190,6 +208,18 @@ struct ContentView: View {
 
             }
             .padding([.top, .bottom], 20)
+            Button(action: {
+//                    TODO
+            }, label: {
+                Text("Reveal One")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .frame(alignment: .center)
+                    .padding(10)
+                    .border(Color.gray)
+                    .background(Color.gray)
+            })
+                .padding(.bottom, 2)
             HStack(spacing:2) {
                 Button(action: {
                     self.board.makeNewBoard()
@@ -204,6 +234,7 @@ struct ContentView: View {
                 })
                 Button(action: {
                     self.board.solveBoard()
+                    self.board.numSteps = 0
                 }, label: {
                     Text("View Solution")
                         .foregroundColor(Color.white)
