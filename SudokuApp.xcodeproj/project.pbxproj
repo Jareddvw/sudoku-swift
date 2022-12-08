@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F13E0FE293F1FC70075674E /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F13E0FD293F1FC70075674E /* SquareView.swift */; };
+		7F13E100293F20E30075674E /* BoardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F13E0FF293F20E30075674E /* BoardClass.swift */; };
 		7F7130D92939966100CA9412 /* SudokuAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7130D82939966100CA9412 /* SudokuAppApp.swift */; };
 		7F7130DB2939966100CA9412 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7130DA2939966100CA9412 /* ContentView.swift */; };
 		7F7130DD2939966200CA9412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F7130DC2939966200CA9412 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F13E0FD293F1FC70075674E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		7F13E0FF293F20E30075674E /* BoardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardClass.swift; sourceTree = "<group>"; };
 		7F7130D52939966100CA9412 /* SudokuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F7130D82939966100CA9412 /* SudokuAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuAppApp.swift; sourceTree = "<group>"; };
 		7F7130DA2939966100CA9412 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			children = (
 				7F7130D82939966100CA9412 /* SudokuAppApp.swift */,
 				7F7130DA2939966100CA9412 /* ContentView.swift */,
+				7F13E0FD293F1FC70075674E /* SquareView.swift */,
+				7F13E0FF293F20E30075674E /* BoardClass.swift */,
 				7F7130DC2939966200CA9412 /* Assets.xcassets */,
 				7F7130DE2939966200CA9412 /* Preview Content */,
 			);
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F13E0FE293F1FC70075674E /* SquareView.swift in Sources */,
+				7F13E100293F20E30075674E /* BoardClass.swift in Sources */,
 				7F7130DB2939966100CA9412 /* ContentView.swift in Sources */,
 				7F7130D92939966100CA9412 /* SudokuAppApp.swift in Sources */,
 			);
